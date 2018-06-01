@@ -16,4 +16,10 @@ Route::get('/', function () {
 });
 
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
-Route::post('signup', 'Auth\RegisterController@showRegister')->name('signup.post');
+Route::post('signup', 'Auth\RegisterController@Register')->name('signup.post');
+
+
+//　ログイン認証
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login')->name('login.post');
+Route::get('login', 'Auth\LoginController@logout')->name('logout.get');
