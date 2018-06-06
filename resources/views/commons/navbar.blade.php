@@ -19,6 +19,7 @@
                             <ul class="dropdown-menu">
                                 <?php $id = Auth::id() ?>
                                 <li>{!! link_to_route('users.show', 'My profile', ['id' => $id]) !!}</li>
+                                <li>{!! link_to_route('users.favorites', 'Favorites', ['id' => $id]) !!}</li>
                                 <li role="separator" class="divider"></li>
                                 <li>{!! link_to_route('logout.get', 'Logout') !!}</li>
                             </ul>

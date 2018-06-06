@@ -13,12 +13,26 @@
                <p> {!! nl2br(e($micropost->content)) !!}</p>
             </div>
             <div>
+              <div style="float: left;">
+                <?php $login_user = Auth::user() ?>
+                @if ($login_user->is_favoriting($micropost->id))
+                    {!! Form::open(['route' => ['user.unfavorite', $micropost->id], 'method' => 'delete']) !!}
+                        {!! Form::submit('unfavorite', ['class' => 'btn btn-success btn-xs']) !!}
+                    {!! Form::close() !!}
+                @else
+                    {!! Form::open(['route' => ['user.favorite', $micropost->id], 'method' => 'store']) !!}
+                        {!! Form::submit('favorite', ['class' => 'btn btn-light btn-xs']) !!}
+                    {!! Form::close() !!}
+                @endif
+            </div>
+            <div style="float: left;">
                 @if (Auth::user()->id == $micropost->user_id)
                     {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
                         {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
                     {!! Form::close() !!}
                 @endif
             </div>
+          </div>
         </div>
     </li>
 @endforeach
