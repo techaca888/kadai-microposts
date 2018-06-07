@@ -4,6 +4,12 @@
     @if (Auth::check())
         <div class="row">
             <aside class="col-md-4">
+                {!! Form::open(['route' => 'microposts.store']) !!}
+                      <div class="form-group">
+                          {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '4']) !!}
+                          {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
+                      </div>
+                  {!! Form::close() !!}
             </aside>
             <div class="col-xs-8">
                 @if (count($microposts) > 0)

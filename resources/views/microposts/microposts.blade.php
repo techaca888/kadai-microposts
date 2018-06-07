@@ -13,22 +13,22 @@
                <p> {!! nl2br(e($micropost->content)) !!}</p>
             </div>
             <div>
-              <div style="float: left;">
+              <div class="btn-fav-unfav">
                 <?php $login_user = Auth::user() ?>
                 @if ($login_user->is_favoriting($micropost->id))
                     {!! Form::open(['route' => ['user.unfavorite', $micropost->id], 'method' => 'delete']) !!}
-                        {!! Form::submit('unfavorite', ['class' => 'btn btn-success btn-xs']) !!}
+                        {!! Form::submit('unfavorite', ['class' => 'btn btn-success btn-xs btn-unfavorite']) !!}
                     {!! Form::close() !!}
                 @else
                     {!! Form::open(['route' => ['user.favorite', $micropost->id], 'method' => 'store']) !!}
-                        {!! Form::submit('favorite', ['class' => 'btn btn-light btn-xs']) !!}
+                        {!! Form::submit(' favorite ', ['class' => 'btn btn-default btn-xs btn-favorite']) !!}
                     {!! Form::close() !!}
                 @endif
             </div>
             <div style="float: left;">
                 @if (Auth::user()->id == $micropost->user_id)
                     {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
-                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs ']) !!}
                     {!! Form::close() !!}
                 @endif
             </div>

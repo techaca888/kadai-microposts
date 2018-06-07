@@ -1,0 +1,13 @@
+.btn-fav-unfav{
+    float: left;
+    text-align: center;
+    margin-right: 7px
+}
+
+.btn-favorite {
+    width: 67px;
+}
+
+.btn-unfavorite {
+    width: 67px;
+}
